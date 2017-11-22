@@ -10,7 +10,18 @@
 
         public Path(string inputPath)
         {
-            _subdirectories = inputPath.Split('/').Skip(1).ToList();
+            _subdirectories = new List<string>();
+            foreach(var subdirectory in inputPath.Split('/').Skip(1).ToList())
+            {
+                if (SimpleFileSystemEnvironment.ParentDirectoryAlias == subdirectory)
+                {
+                    _subdirectories.RemoveAt(_subdirectories.Count - 1);
+                }
+                else
+                {
+                    _subdirectories.Add(subdirectory);
+                }
+            }
         }
 
         public void Cd(string inputPath)
