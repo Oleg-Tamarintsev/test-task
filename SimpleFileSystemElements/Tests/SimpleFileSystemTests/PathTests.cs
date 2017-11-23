@@ -48,6 +48,7 @@
         }
 
         [TestCase("/", "..", "Cannot build absolute path upper to root directory", TestName = "Cd method should not move path to upper then root directory")]
+        [TestCase("/", "/a", "Cannot move to absolut path", TestName = "Cd method should not move path to absolute path")]
         [TestCase("/", "a//b", "Invalid path: subdirectory is missing", TestName = "Cd method should not move path to badly qulified reletive path case 1")]
         [TestCase("/", "/a/b/", "Path cannot end with path delimiter", TestName = "Cd method should not move path to badly qulified reletive path case 2")]
         [TestCase("/", "a/..b", "Invalid path: subdiricotry contains unexpected symbol", TestName = "Cd method should not move path to reletive path with unexpected symbols case 1")]

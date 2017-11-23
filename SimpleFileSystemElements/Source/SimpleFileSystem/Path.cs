@@ -27,7 +27,7 @@
             var relative = GetPathModel(inputPath);
             if (relative is AbsolutePathModel)
             {
-                throw new InvalidPathException("Cannot build Path object based on relative path");
+                throw new InvalidPathException("Cannot move to absolut path");
                 //_model = relative;
             }
             if(relative is RelativePathModel)
