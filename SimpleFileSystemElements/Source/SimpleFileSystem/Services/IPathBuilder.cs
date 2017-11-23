@@ -2,10 +2,10 @@
 {
     public interface IPathBuilder
     {
-        void AcceptRootDirectory();
+        void CreateRootDirectory();
 
-        void AcceptParentDirectory();
+        void AddParentDirectory();
 
-        void AcceptSubdirectory(string subdirectory);
+        void AddSubdirectory(string subdirectory);
     }
 }

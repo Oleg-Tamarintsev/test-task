@@ -11,7 +11,7 @@
         private readonly PathParser _parser = new PathParser();
         private IPathModel _model;
 
-        void IPathBuilder.AcceptParentDirectory()
+        void IPathBuilder.AddParentDirectory()
         {
             if (_model == null)
             {
@@ -20,7 +20,7 @@
             _model.MoveToParentDirectory();
         }
 
-        void IPathBuilder.AcceptRootDirectory()
+        void IPathBuilder.CreateRootDirectory()
         {
             if(_model == null)
             {
@@ -32,7 +32,7 @@
             }
         }
 
-        void IPathBuilder.AcceptSubdirectory(string subdirectory)
+        void IPathBuilder.AddSubdirectory(string subdirectory)
         {
             if (_model == null)
             {

@@ -22,13 +22,13 @@
             switch(token.Type)
             {
                 case PathTokenType.Subdirectory:
-                    _visitor.AcceptSubdirectory(token.Value);
+                    _visitor.AddSubdirectory(token.Value);
                     break;
                 case PathTokenType.RootDirectory:
-                    _visitor.AcceptRootDirectory();
+                    _visitor.CreateRootDirectory();
                     break;
                 case PathTokenType.ParentDirectory:
-                    _visitor.AcceptParentDirectory();
+                    _visitor.AddParentDirectory();
                     break;
             }
         }

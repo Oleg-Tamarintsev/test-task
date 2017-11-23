@@ -16,7 +16,7 @@
         {
             get
             {
-                return DefaultRootPath; // todo: ensure using oterwise remove me!
+                return DefaultRootPath;
             }
         }
 
@@ -27,7 +27,7 @@
         {
             get
             {
-                return DefaultPathDelimiter; // todo: ensure using oterwise remove me!
+                return DefaultPathDelimiter;
             }
         }
 
@@ -43,7 +43,7 @@
         }
 
         /// <summary>
-        /// Проверяет, что заданная последоватльность символов влидно называть поддиректорией в данной среде
+        /// Проверяет, что заданную последоватльность символов валидно называть поддиректорией в данной среде
         /// </summary>
         public static bool IsValidSubdirectory(IEnumerable<char> subdirectory)
         {
