@@ -1,5 +1,8 @@
 ﻿namespace SimpleFileSystem
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class SimpleFileSystemEnvironment
     {
         private const string DefaultRootPath = "/";
@@ -37,6 +40,14 @@
             {
                 return DefaultParentDirectoryAlias;
             }
+        }
+
+        /// <summary>
+        /// Проверяет, что заданная последоватльность символов влидно называть поддиректорией в данной среде
+        /// </summary>
+        public static bool IsValidSubdirectory(IEnumerable<char> subdirectory)
+        {
+            return subdirectory.All(s => ('a' <= s && s <= 'z') || ('A' <= s && s <= 'Z')); // todo
         }
     }
 }

@@ -1,45 +1,46 @@
 ﻿namespace SimpleFileSystem
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using Model;
+    using Services;
 
     public sealed class Path
     {
-        private List<string> _subdirectories;
+        private IPathModel _model;
+
+        private IPathModel GetPathModel(string input)
+        {
+            var factory = new PathFactory();
+            return factory.Build(input);
+        }
 
         public Path(string inputPath)
         {
-            _subdirectories = new List<string>();
-            foreach(var subdirectory in inputPath.Split('/').Skip(1).ToList())
+            _model = GetPathModel(inputPath);
+            if(!(_model is AbsolutePathModel))
             {
-                if (SimpleFileSystemEnvironment.ParentDirectoryAlias == subdirectory)
-                {
-                    _subdirectories.RemoveAt(_subdirectories.Count - 1);
-                }
-                else
-                {
-                    _subdirectories.Add(subdirectory);
-                }
+                throw new InvalidPathException("Cannot build Path object based on relative path");
             }
         }
 
         public void Cd(string inputPath)
         {
-            throw new NotImplementedException();
+            var relative = GetPathModel(inputPath);
+            if (_model is AbsolutePathModel)
+            {
+                throw new InvalidPathException("Cannot build Path object based on relative path");
+                //_model = relative;
+            }
+            if(_model is RelativePathModel)
+            {
+                _model.Cd(relative as RelativePathModel);
+            }
         }
 
         public string CurrentPath
         {
             get
             {
-                var sb = new System.Text.StringBuilder();
-                foreach (var item in _subdirectories)
-                {
-                    sb.Append('/');
-                    sb.Append(item);
-                }
-                return sb.ToString();
+                return _model.ToString();
             }
         }
     }
