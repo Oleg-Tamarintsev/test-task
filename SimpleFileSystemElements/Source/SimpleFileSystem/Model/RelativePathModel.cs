@@ -48,5 +48,8 @@
             var lastSubdirectory = _subdirectories.LastOrDefault();
             return lastSubdirectory != null && lastSubdirectory != SimpleFileSystemEnvironment.ParentDirectoryAlias;
         }
+
+        public override string ToString()
+            => $"{string.Join(SimpleFileSystemEnvironment.PathDelimiter.ToString(), _subdirectories)}";
     }
 }

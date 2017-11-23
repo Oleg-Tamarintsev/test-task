@@ -4,11 +4,11 @@
     using Grammar.Lexer;
     using Grammar.Parser;
 
-    public class ACLTokenVisitorAdapter : ITokenVisitor
+    public class ACLTokenAdapter : ITokenVisitor
     {
-        private readonly IPathSegmentVisitor _visitor;
+        private readonly IPathBuilder _visitor;
 
-        public ACLTokenVisitorAdapter(IPathSegmentVisitor visitor)
+        public ACLTokenAdapter(IPathBuilder visitor)
         {
             if(visitor == null)
             {

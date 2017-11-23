@@ -25,12 +25,12 @@
         public void Cd(string inputPath)
         {
             var relative = GetPathModel(inputPath);
-            if (_model is AbsolutePathModel)
+            if (relative is AbsolutePathModel)
             {
                 throw new InvalidPathException("Cannot build Path object based on relative path");
                 //_model = relative;
             }
-            if(_model is RelativePathModel)
+            if(relative is RelativePathModel)
             {
                 _model.Cd(relative as RelativePathModel);
             }

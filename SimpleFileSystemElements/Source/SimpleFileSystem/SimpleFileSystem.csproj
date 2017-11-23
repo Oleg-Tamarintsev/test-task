@@ -55,8 +55,8 @@
     <Compile Include="Model\RelativePathModel.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ACLTokenVisitorAdapter.cs" />
-    <Compile Include="Services\IPathSegmentVisitor.cs" />
+    <Compile Include="Services\ACLTokenAdapter.cs" />
+    <Compile Include="Services\IPathBuilder.cs" />
     <Compile Include="Services\PathFactory.cs" />
     <Compile Include="SimpleFileSystemEnvironment.cs" />
   </ItemGroup>

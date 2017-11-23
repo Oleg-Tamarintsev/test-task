@@ -1,6 +1,6 @@
 ﻿namespace SimpleFileSystem.Services
 {
-    public interface IPathSegmentVisitor
+    public interface IPathBuilder
     {
         void AcceptRootDirectory();
 

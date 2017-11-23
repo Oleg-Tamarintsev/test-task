@@ -65,8 +65,12 @@
                     case PathTokenType.ParentDirectory:
                     case PathTokenType.Subdirectory:
                         return new EnterToDirectoryState();
+                    case PathTokenType.EndToken:
+                        throw new InvalidOperationException("Path cannot end with path delimiter");
+                    case PathTokenType.PathDelimiter:
+                        throw new InvalidOperationException("Invalid path: subdirectory is missing");
                     default:
-                        throw new InvalidOperationException("");
+                        throw new InvalidOperationException("Unexpected token");
                 }
             }
         }
@@ -81,8 +85,10 @@
                         return new ParsingComplete();
                     case PathTokenType.PathDelimiter:
                         return new OutOfDirectoryState();
+                    case PathTokenType.Subdirectory:
+                        throw new InvalidOperationException("Invalid path: subdiricotry contains unexpected symbol");
                     default:
-                        throw new InvalidOperationException("");
+                        throw new InvalidOperationException("Unexpected token");
                 }
             }
         }
@@ -98,8 +104,10 @@
                         return new EnterToDirectoryState();
                     case PathTokenType.EndToken:
                         return new ParsingComplete();
+                    case PathTokenType.PathDelimiter:
+                        throw new InvalidOperationException("Invalid path: subdirectory is missing");
                     default:
-                        throw new InvalidOperationException("");
+                        throw new InvalidOperationException("Unexpected token");
                 }
             }
         }

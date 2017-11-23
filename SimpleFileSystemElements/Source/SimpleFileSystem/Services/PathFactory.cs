@@ -5,13 +5,13 @@
     using Grammar.Lexer;
     using Model;
 
-    public sealed class PathFactory: IPathSegmentVisitor
+    public sealed class PathFactory: IPathBuilder
     {
         private readonly PathLexer _lexer = new PathLexer();
         private readonly PathParser _parser = new PathParser();
         private IPathModel _model;
 
-        public void AcceptParentDirectory()
+        void IPathBuilder.AcceptParentDirectory()
         {
             if (_model == null)
             {
@@ -20,7 +20,7 @@
             _model.MoveToParentDirectory();
         }
 
-        public void AcceptRootDirectory()
+        void IPathBuilder.AcceptRootDirectory()
         {
             if(_model == null)
             {
@@ -32,7 +32,7 @@
             }
         }
 
-        public void AcceptSubdirectory(string subdirectory)
+        void IPathBuilder.AcceptSubdirectory(string subdirectory)
         {
             if (_model == null)
             {
@@ -48,7 +48,13 @@
                 return _model;
             }
             var tokens = _lexer.Tokenize(input);
-            _parser.Parse(tokens, new ACLTokenVisitorAdapter(this));
+            try
+            {
+                _parser.Parse(tokens, new ACLTokenAdapter(this));
+            } catch(InvalidOperationException exception)
+            {
+                throw new InvalidPathException(exception.Message, exception);
+            }
             return _model;
         }
     }
