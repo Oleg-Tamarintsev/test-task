@@ -1,5 +1,6 @@
 ﻿namespace SimpleFileSystem.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -9,6 +10,10 @@
 
         public void AddSubdirectory(string subdirectory)
         {
+            if (string.IsNullOrEmpty(subdirectory))
+            {
+                throw new ArgumentException(nameof(subdirectory));
+            }
             _subdirectories.Add(subdirectory);
         }
 

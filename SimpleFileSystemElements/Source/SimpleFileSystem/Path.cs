@@ -1,5 +1,7 @@
 ﻿namespace SimpleFileSystem
 {
+    using Antlr4.Runtime;
+    using Grammar;
     using Model;
     using Services;
 
@@ -9,8 +11,23 @@
 
         private IPathModel GetPathModel(string input)
         {
-            var factory = new PathFactory();
-            return factory.Build(input);
+            var modelBuilder = new PathBuilder();
+
+            var lexer = new PathGrammarLexer(new AntlrInputStream(input));
+            lexer.RemoveErrorListeners();
+            lexer.AddErrorListener(new PathParsingErrorListener());
+
+            var tokens = new CommonTokenStream(lexer);
+            var parser = new PathGrammarParser(tokens);
+
+            parser.AddParseListener(new PathGrammarListener(modelBuilder));
+
+            parser.RemoveErrorListeners();
+            parser.AddErrorListener(new PathParsingErrorListener());
+
+            var path = parser.path();
+
+            return modelBuilder.Build();
         }
 
         public Path(string inputPath)

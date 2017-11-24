@@ -8,8 +8,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C91FB82A-2950-4146-84FD-0748126008EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFileSystem", "Source\SimpleFileSystem\SimpleFileSystem.csproj", "{2D148496-B850-4E2E-8505-9E18829989A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148} = {C264AC6A-EAA0-4223-A47E-C86281E7B148}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFileSystemTests", "Tests\SimpleFileSystemTests\SimpleFileSystemTests.csproj", "{08E1E915-71DF-4301-9923-53FD2FDD43E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148} = {C264AC6A-EAA0-4223-A47E-C86281E7B148}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathParser", "Source\PathParser\PathParser.csproj", "{C264AC6A-EAA0-4223-A47E-C86281E7B148}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +33,10 @@ Global
 		{08E1E915-71DF-4301-9923-53FD2FDD43E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08E1E915-71DF-4301-9923-53FD2FDD43E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08E1E915-71DF-4301-9923-53FD2FDD43E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2D148496-B850-4E2E-8505-9E18829989A8} = {E6130FED-BE9E-4332-8D84-F96DC81C4160}
 		{08E1E915-71DF-4301-9923-53FD2FDD43E9} = {C91FB82A-2950-4146-84FD-0748126008EA}
+		{C264AC6A-EAA0-4223-A47E-C86281E7B148} = {E6130FED-BE9E-4332-8D84-F96DC81C4160}
 	EndGlobalSection
 EndGlobal

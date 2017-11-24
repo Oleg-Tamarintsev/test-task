@@ -1,5 +1,6 @@
 ﻿namespace SimpleFileSystem.Model
 {
+    using System;
     using System.Collections.Generic;
 
     public sealed class AbsolutePathModel : IPathModel
@@ -8,6 +9,10 @@
 
         public void AddSubdirectory(string subdirectory)
         {
+            if(string.IsNullOrEmpty(subdirectory))
+            {
+                throw new ArgumentException(nameof(subdirectory));
+            }
             _subdirectories.Add(subdirectory);
         }
 
